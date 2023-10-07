@@ -18,12 +18,12 @@ const Admin = () => {
 	useEffect(() => {
 		const fetchMainCategories = async () => {
 			const response = await fetch(
-				"http://192.168.1.16:8080/api/categorie/main",
+				"http://192.168.1.29:8080/api/categorie/main",
 				{
 					method: "GET",
-					headers:{
-						Authorization: `Bearer ${token}`
-					}
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
 				}
 			);
 			const data = await response.json();
@@ -43,12 +43,12 @@ const Admin = () => {
 	// For select option
 	const fetchSubCategories = async (radioId) => {
 		const response = await fetch(
-			`http://192.168.1.16:8080/api/categorie/sub?mid=${radioId}`,
+			`http://192.168.1.29:8080/api/categorie/sub?mid=${radioId}`,
 			{
 				method: "GET",
-				headers:{
-					Authorization: `Bearer ${token}`
-				}
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
 			}
 		);
 		const data = await response.json();
@@ -62,7 +62,7 @@ const Admin = () => {
 
 	const handleSelectChange = (e) => {
 		setSelectedOption(e.target.value);
-	}
+	};
 
 	const handleRadioOption = (e) => {
 		setRadioOption(e.target.value);
@@ -71,13 +71,13 @@ const Admin = () => {
 		} catch (e) {
 			console.log("Something went wrong!");
 		}
-	}
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const itemFields = { sid: selectedOption, name, price, image };
 		try {
-			const response = await fetch("http://192.168.1.16:8080/api/item", {
+			const response = await fetch("http://192.168.1.29:8080/api/item", {
 				method: "POST",
 				headers: {
 					Authorization: `Bearer ${token}`,

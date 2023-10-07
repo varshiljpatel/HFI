@@ -12,7 +12,7 @@ const Admin = () => {
 		const adminCredentials = { email: username, password };
 		try {
 			const response = await fetch(
-				"http://192.168.1.16:8080/auth/admin/login",
+				"http://192.168.1.29:8080/auth/admin/login",
 				{
 					method: "POST", // Specify the HTTP method as POST
 					headers: {

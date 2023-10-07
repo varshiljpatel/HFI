@@ -10,12 +10,12 @@ function availItems() {
 		const fetchItems = async () => {
 			try {
 				const response = await fetch(
-					"http://192.168.1.16:8080/api/item",
+					"http://192.168.1.29:8080/api/item",
 					{
 						method: "GET",
-						headers:{
-							Authorization: `Bearer ${token}`
-						}
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
 					}
 				);
 				if (!response.ok) {
