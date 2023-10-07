@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
+import Link from "next/link";
 import styles from "./navbar.module.css"; // Import the CSS module
 
 function Navbar() {
@@ -14,10 +15,8 @@ function Navbar() {
       <div>
         <div className={`fixed w-full ${styles.navbar}`}></div>
         {/* Desktop Navigation */}
-        <div className="hidden md:flex bg-[#0E3A5D] p-4 justify-between items-center">
-          <div className="text-white text-2xl font-bold">
-            <img src="" alt="" />
-          </div>
+        <div className="hidden md:flex bg-[#0E3A5D] p-4 justify-between items-center px-8">
+          <div className="text-white text-2xl font-bold">MenuCrafter</div>
           <ul className="flex space-x-6 text-white">
             <li>
               <a href="/">Home</a>
@@ -35,22 +34,39 @@ function Navbar() {
               <a href="#contact">Contact</a>
             </li>
           </ul>
-          <div className="ml-4">
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={{
-                backgroundColor: "#A83232 !important",
-                padding: "8px 10px !important",
-                margin: "auto",
-                justifyContent: "center",
-                alignItems: "center",
-                display: "flex",
-                boxShadow: "2px 2px 12px black",
-              }}
-            >
-              <span className="">Create Your Menu</span>
-            </Button>
+          <div className="ml-4 space-x-2">
+            {/* Link to the Signup page */}
+            <Link href="/admin/SignUp">
+              <Button
+                size="small"
+                variant="contained"
+                color="secondary"
+                sx={{
+                  backgroundColor: "#A83232 !important",
+                  padding: "8px 10px !important",
+                  display: "inline-block",
+                  boxShadow: "2px 2px 12px black",
+                }}
+              >
+                <span className="">Signup</span>
+              </Button>
+            </Link>
+            {/* Link to the Login page */}
+            <Link href="/login">
+              <Button
+                size="small"
+                variant="contained"
+                color="secondary"
+                sx={{
+                  backgroundColor: "#A83232 !important",
+                  padding: "8px 10px !important",
+                  display: "inline-block",
+                  boxShadow: "2px 2px 12px black",
+                }}
+              >
+                <span className="">Login</span>
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -126,22 +142,33 @@ function Navbar() {
               </a>
             </li>
           </ul>
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{
-              backgroundColor: "#A83232 !important",
-              padding: "8px 10px !important",
-              margin: "auto",
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              boxShadow: "2px 2px 12px black",
-              marginBlock: "2rem",
-            }}
-          >
-            <span className="">Create Your Menu</span>
-          </Button>
+          <div className="mt-2 space-x-2  flex justify-center items-center">
+            {/* Split the button into Signup and Login buttons */}
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{
+                backgroundColor: "#A83232 !important",
+                padding: "8px 10px !important",
+                display: "inline-block",
+                boxShadow: "2px 2px 12px black",
+              }}
+            >
+              <span className="">Signup</span>
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{
+                backgroundColor: "#A83232 !important",
+                padding: "8px 10px !important",
+                display: "inline-block",
+                boxShadow: "2px 2px 12px black",
+              }}
+            >
+              <span className="">Login</span>
+            </Button>
+          </div>
         </div>
       </div>
     </>

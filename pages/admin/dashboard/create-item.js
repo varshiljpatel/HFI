@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import csvtojson from "csvtojson";
 
+
 const Admin = () => {
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
@@ -14,14 +15,15 @@ const Admin = () => {
 	const [subcMain, setSubcMain] = useState([]);
 	const [selectedOption, setSelectedOption] = useState('');
 	const [radioOption, setRadioOption] = useState('');
-	const	token = localStorage.getItem('token');
+
+	const token = localStorage.getItem('token');
 	useEffect(() => {
 		const fetchMainCategories = async () => {
 			const response = await fetch(
 				"http://192.168.1.16:8080/api/categorie/main",
 				{
 					method: "GET",
-					headers:{
+					headers: {
 						Authorization: `Bearer ${token}`
 					}
 				}
@@ -46,7 +48,7 @@ const Admin = () => {
 			`http://192.168.1.16:8080/api/categorie/sub?mid=${radioId}`,
 			{
 				method: "GET",
-				headers:{
+				headers: {
 					Authorization: `Bearer ${token}`
 				}
 			}
@@ -146,6 +148,7 @@ const Admin = () => {
 
 	return (
 		<div className="text-white">
+
 			<main className="bg-black flex flex-col items-center sm:justify-center gap-y-8 lg:h-screen min-h-screen max-sm:p-8">
 				<p className="text-white text-[24px] font-medium">
 					Item's Details

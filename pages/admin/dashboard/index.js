@@ -1,10 +1,59 @@
 import Link from "next/link";
 import React from "react";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from "@mui/material";
+import { QRCode } from "react-qrcode-logo";
 
 const Dashboard = () => {
+	const [open, setOpen] = React.useState(false);
+	const [qrValue, setQrValue] = React.useState("jeftar");
+
+	const Transition = React.forwardRef(function Transition(props, ref) {
+		return <Slide direction="up" ref={ref} {...props} />;
+	});
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+	const downloadQRCode = () => {
+		// Generate download with use canvas and stream
+		const canvas = document.getElementById("qr-gen");
+		const pngUrl = canvas
+			.toDataURL("image/png")
+			.replace("image/png", "image/octet-stream");
+		let downloadLink = document.createElement("a");
+		downloadLink.href = pngUrl;
+		downloadLink.download = `${qrValue}.png`;
+		document.body.appendChild(downloadLink);
+		downloadLink.click();
+		document.body.removeChild(downloadLink);
+	};
 	return (
 		<>
 			<main className="flex flex-col w-full items-center justify-center h-screen">
+
+				<div>
+					{" "}
+					<Dialog
+						open={open}
+						TransitionComponent={Transition}
+						keepMounted
+						onClose={handleClose}
+						aria-describedby="alert-dialog-slide-description"
+					>
+						<DialogTitle>{"Get your QR here."}</DialogTitle>
+						<DialogContent className="flex justify-center">
+							<DialogContentText id="alert-dialog-slide-description" className="items-center">
+								<QRCode id="qr-gen" value="http://192.168.1.16:3000/menu" />
+							</DialogContentText>
+						</DialogContent>
+						<DialogActions>
+							<Button onClick={downloadQRCode}> download</Button>
+						</DialogActions>
+					</Dialog>
+				</div>
 				<p className="mb-8 text-white text-[24px] font-semibold">
 					Check Orders History
 				</p>{" "}
@@ -27,6 +76,14 @@ const Dashboard = () => {
 					>
 						Check This week's Orders
 					</Link>
+					<Button
+						variant="outlined"
+						className="text-white"
+						onClick={handleClickOpen}
+
+					>
+						Download Your QR
+					</Button>
 				</div>
 				<div className="absolute flex justify-center items-center bottom-[4%] right-[6%]">
 					<Link

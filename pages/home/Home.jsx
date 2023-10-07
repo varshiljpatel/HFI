@@ -34,7 +34,6 @@ function Home() {
                 boxShadow: "2px 2px 12px black",
               }}
             >
-              <QRCode value="https://google.com" />
               <span className={`${style.btnText}`}>Create Your Menu</span>
             </Button>
           </div>
