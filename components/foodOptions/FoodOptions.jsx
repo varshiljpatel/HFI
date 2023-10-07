@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./FoodOptions.module.css"; // Import the CSS module
 
 function FoodOptions({ selectedOption, onSelectOption }) {
+
   const foodOptions = ["All", "Roties", "Veg", "NonVeg", "Punjabi", "Gujarati"]; // Add more options as needed
 
   return (

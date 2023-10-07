@@ -10,8 +10,8 @@ function SpecialBanner({ specialItem }) {
       {/* Display the image */}
       <div style={{ position: "relative" }}>
         <img
-          src={specialItem.image}
-          alt={specialItem.name}
+          src={specialItem.imageUrl}
+          alt={specialItem.item_name}
           style={{
             width: "100%",
             height: "15rem",
@@ -41,7 +41,7 @@ function SpecialBanner({ specialItem }) {
               fontWeight: "500",
             }}
           >
-            {specialItem.name}
+            {specialItem.item_name}
           </Typography>
           {specialItem.price && (
             <Typography
