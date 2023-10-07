@@ -12,6 +12,7 @@ import sahal from "../../public/assets/Shaikh Sahal Shahid.jpg";
 import ContactForm from "../../components/ContactUs/ContactForm";
 import StickyButton from "../../components/stickyButton/StickyButton";
 import Footer from "../../components/footer/Footer";
+import { QRCode } from "react-qrcode-logo";
 
 function Home() {
   return (
@@ -33,6 +34,7 @@ function Home() {
                 boxShadow: "2px 2px 12px black",
               }}
             >
+              <QRCode value="https://google.com" />
               <span className={`${style.btnText}`}>Create Your Menu</span>
             </Button>
           </div>
